@@ -8,14 +8,14 @@ const goodSchema = Schema(
   {
     title: {
       type: String,
-      // required: [true, "Title is required."],
+      required: [true, "Title is required."],
       minlength: 2,
       maxlength: 30,
       //   match: [lettersRegex, "Use only letters."],
     },
     text: {
       type: String,
-      // required: [true, "text is required."],
+      required: [true, "text is required."],
       minlength: 2,
       //   maxlength: 24,
       //   match: [lettersRegex, "Use only letters."],
@@ -23,11 +23,11 @@ const goodSchema = Schema(
     photoURL: {
       type: String,
       default: null,
-      // required: [true, "Photo of the pet is required."],
+      // required: [true, "Photo of the good is required."],
     },
     price: {
       type: Number,
-      // required: [true, "Price is required."],
+      required: [true, "Price is required."],
     },
     // comments: {
     //   type: String,
@@ -44,10 +44,10 @@ const goodSchema = Schema(
 );
 
 const joiAddGoodSchema = Joi.object({
-  title: Joi.string().min(2).max(30),
-  text: Joi.string().min(2),
+  title: Joi.string().min(2).max(30).required(),
+  text: Joi.string().min(2).required(),
   photoURL: Joi.string(),
-  price: Joi.number(),
+  price: Joi.number().required(),
   //   comments: Joi.string().min(8).max(120).required(),
 });
 

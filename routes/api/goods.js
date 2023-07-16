@@ -7,13 +7,14 @@ const { goodsCtrls: ctrl } = require("../../controllers");
 
 const router = express.Router();
 
-router.get("/getGoods", ctrlWrapper(ctrl.getGoods));
+router.get("/getgoods", ctrlWrapper(ctrl.getGoods));
+router.get("/id/:id", ctrlWrapper(ctrl.getById));
 
 router.post(
-  "/addGood",
+  "/addgood",
   auth,
-  validation(joiAddGoodSchema),
   upload.single("photoURL"),
+  validation(joiAddGoodSchema),
   ctrlWrapper(ctrl.addGood)
 );
 
