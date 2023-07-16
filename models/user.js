@@ -37,20 +37,26 @@ const userSchema = new Schema(
 
     phone: {
       type: String,
-      required: [true, "PhoneNumber is required"],
       match: [phoneRegexp, "Please enter a valid phone number"],
+    },
+
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
     },
 
     accessToken: {
       type: String,
       default: null,
     },
+
     refreshToken: {
       type: String,
       default: null,
     },
 
-    goodsInCart: [{ type: Schema.Types.ObjectId, ref: "goods" }],
+    goodsInCart: [{ type: Schema.Types.ObjectId, ref: "good" }],
   },
 
   { versionKey: false, timestamps: true }
@@ -65,18 +71,6 @@ userSchema.methods.comparePassword = function (password) {
 };
 
 const joiRegisterSchema = Joi.object({
-  //   email: Joi.string()
-  //     .email({ tlds: { deny: ["ru"] } })
-  //     .error(
-  //       (errors) =>
-  //         new Error(
-  //           "enter valid email: min 5, max 63 characters, except .ru. Don't use cyrillic, special symbols, besides '-', '_', '.' "
-  //         )
-  //     )
-  //     .min(5)
-  //     .max(63)
-  //     .pattern(emailRegexp)
-  //     .required(),
   email: Joi.string().min(5).max(63).pattern(emailRegexp).required(),
   password: Joi.string().min(7).pattern(passwordRegexp).required(),
   name: Joi.string().min(2).max(16).pattern(nameRegexp).required(),

@@ -1,7 +1,7 @@
 const { User } = require("../../models");
 const { Unauthorized } = require("http-errors");
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 
 const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
 
