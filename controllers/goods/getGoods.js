@@ -1,7 +1,7 @@
 const { Good } = require("../../models");
 
 const getGoods = async (req, res) => {
-  const goods = await Good.find({});
+  const goods = await Good.find();
   if (goods.length === 0) {
     res.json({
       results: "Sorry, there is no news yet",
