@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.get("/getgoods", ctrlWrapper(ctrl.getGoods));
 router.get("/id/:id", ctrlWrapper(ctrl.getById));
+router.delete("/delete/:id", auth, ctrlWrapper(ctrl.deleteGood));
 
 router.post(
   "/addgood",
