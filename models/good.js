@@ -20,6 +20,10 @@ const goodSchema = Schema(
       //   maxlength: 24,
       //   match: [lettersRegex, "Use only letters."],
     },
+    description: {
+      type: String,
+      required: [true, "description is required."],
+    },
     photoURL: {
       type: String,
       default: null,
@@ -46,6 +50,7 @@ const goodSchema = Schema(
 const joiAddGoodSchema = Joi.object({
   title: Joi.string().min(2).max(30).required(),
   text: Joi.string().min(2).required(),
+  description: Joi.string().required(),
   photoURL: Joi.string(),
   price: Joi.number().required(),
   //   comments: Joi.string().min(8).max(120).required(),
