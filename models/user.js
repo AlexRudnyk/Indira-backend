@@ -56,7 +56,7 @@ const userSchema = new Schema(
       default: null,
     },
 
-    goodsInCart: [{ type: Schema.Types.ObjectId, ref: "good" }],
+    goodsInCart: [{ type: Schema.Types.Mixed, ref: "good" }],
   },
 
   { versionKey: false, timestamps: true }

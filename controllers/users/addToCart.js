@@ -8,21 +8,21 @@ const addToCart = async (req, res) => {
     throw new NotFound(`Good with id=${id} not found`);
   }
 
+  const chosenGood = await Good.findById({ _id: id });
+
   const user = await User.findById({ _id });
-  const inCart = user.goodsInCart.includes(id);
-  if (inCart) {
-    throw new Conflict(`Good with id: ${id} has been already added to cart`);
-  }
+  // const inCart = user.goodsInCart.includes(id);
+  // if (inCart) {
+  //   throw new Conflict(`Good with id: ${id} has been already added to cart`);
+  // }
 
   await User.findOneAndUpdate(
     { _id },
-    { $push: { goodsInCart: id } },
+    { $push: { goodsInCart: chosenGood } },
     { new: true }
   ).populate("goodsInCart", "-createdAt -updatedAt");
 
-  // const newChosenGood = await Good.findById({ _id: id });
-
-  res.json(id);
+  res.json(chosenGood);
 };
 
 module.exports = addToCart;
