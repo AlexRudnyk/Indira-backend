@@ -20,9 +20,9 @@ const addToCart = async (req, res) => {
     { new: true }
   ).populate("goodsInCart", "-createdAt -updatedAt");
 
-  const newChosenGood = await Good.findById({ _id: id });
+  // const newChosenGood = await Good.findById({ _id: id });
 
-  res.json(newChosenGood);
+  res.json(id);
 };
 
 module.exports = addToCart;
