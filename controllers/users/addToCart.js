@@ -11,9 +11,11 @@ const addToCart = async (req, res) => {
   const chosenGood = await Good.findById({ _id: id });
 
   const user = await User.findById({ _id });
-  // const inCart = user.goodsInCart.includes(id);
+  // const inCart = user.goodsInCart.includes(chosenGoodId);
   // if (inCart) {
-  //   throw new Conflict(`Good with id: ${id} has been already added to cart`);
+  //   throw new Conflict(
+  //     `Good with id: ${chosenGoodId} has been already added to cart`
+  //   );
   // }
 
   await User.findOneAndUpdate(

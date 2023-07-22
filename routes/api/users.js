@@ -13,5 +13,6 @@ router.post(
   //   validation(joiAddGoodSchema),
   ctrlWrapper(ctrl.addToCart)
 );
+router.delete("/deletefromcart/:id", auth, ctrlWrapper(ctrl.deleteFromCart));
 
 module.exports = router;
