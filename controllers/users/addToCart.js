@@ -1,4 +1,4 @@
-const { User, Good } = require("../../models");
+const { User } = require("../../models");
 const { NotFound, Conflict } = require("http-errors");
 
 const addToCart = async (req, res) => {
@@ -8,23 +8,19 @@ const addToCart = async (req, res) => {
     throw new NotFound(`Good with id=${id} not found`);
   }
 
-  const chosenGood = await Good.findById({ _id: id });
-
   const user = await User.findById({ _id });
-  // const inCart = user.goodsInCart.includes(chosenGoodId);
-  // if (inCart) {
-  //   throw new Conflict(
-  //     `Good with id: ${chosenGoodId} has been already added to cart`
-  //   );
-  // }
+  const inCart = user.goodsInCart.includes(id);
+  if (inCart) {
+    throw new Conflict(`Good with id: ${id} has been already added to cart`);
+  }
 
   await User.findOneAndUpdate(
     { _id },
-    { $push: { goodsInCart: chosenGood } },
+    { $push: { goodsInCart: id } },
     { new: true }
   ).populate("goodsInCart", "-createdAt -updatedAt");
 
-  res.json(chosenGood);
+  res.json(id);
 };
 
 module.exports = addToCart;

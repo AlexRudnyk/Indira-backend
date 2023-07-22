@@ -1,5 +1,5 @@
 const { NotFound, Conflict } = require("http-errors");
-const { User, Good } = require("../../models");
+const { User } = require("../../models");
 
 const deleteFromCart = async (req, res) => {
   const { _id } = req.user;
@@ -10,24 +10,18 @@ const deleteFromCart = async (req, res) => {
   }
 
   const user = await User.findById({ _id });
-  //   const inFavorites = user.favoriteNotices.includes(id);
-  //   if (!inFavorites) {
-  //     throw new Conflict(`Notice with id: ${id} not in favorites`);
-  //   }
-
-  const goodToDelete = await Good.findById({ _id: id });
+  const inCart = user.goodsInCart.includes(id);
+  if (!inCart) {
+    throw new Conflict(`Good with id: ${id} not in favorites`);
+  }
 
   await User.findOneAndUpdate(
     { _id },
-    { $pull: { goodsInCart: goodToDelete } },
+    { $pull: { goodsInCart: id } },
     {
       new: true,
     }
   ).populate("goodsInCart");
-
-  //   if (!favoriteToRemove) {
-  //     throw new NotFound(`Notice with id=${id} not found`);
-  //   }
 
   res.json(id);
 };
