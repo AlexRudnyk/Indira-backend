@@ -1,12 +1,9 @@
 const { Good } = require("../../models");
 
 const editGood = async (req, res) => {
-  const { id } = req.params;
   const body = req.body;
 
-  await Good.findByIdAndUpdate({ _id: id }, body, {
-    new: true,
-  });
+  await Good.findByIdAndUpdate({ _id: body.id }, body);
 
   res.json(body);
 };
