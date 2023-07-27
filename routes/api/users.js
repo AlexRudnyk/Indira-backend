@@ -14,5 +14,6 @@ router.post(
   ctrlWrapper(ctrl.addToCart)
 );
 router.delete("/deletefromcart/:id", auth, ctrlWrapper(ctrl.deleteFromCart));
+router.post("/order", auth, ctrlWrapper(ctrl.sendOrder));
 
 module.exports = router;
