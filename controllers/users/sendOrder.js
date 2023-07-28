@@ -17,7 +17,8 @@ const sendOrder = async (req, res) => {
         <p>Email: ${body.user.email}</p>
         <h2>Order</h2>
       <div>${body.goods}</div>
-      <h2>${body.totalSum}</h2>
+      <h2>Total Sum</h2>
+      <p>${body.totalSum} UAH</p>
       </div>
       `,
   };
