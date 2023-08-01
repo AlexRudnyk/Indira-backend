@@ -1,5 +1,3 @@
-const { User } = require("../../models");
-
 const getCurrent = async (req, res) => {
   const { _id, name, email, phone, role, goodsInCart } = req.user;
   res.json({
