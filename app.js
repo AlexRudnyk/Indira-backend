@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRouter = require("./routes/api/auth");
 const goodsRouter = require("./routes/api/goods");
 const usersRouter = require("./routes/api/users");
+const commentRouter = require("./routes/api/comments");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/goods", goodsRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/comments", commentRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
