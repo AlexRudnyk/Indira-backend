@@ -8,14 +8,14 @@ const { commentsCtrls: ctrl } = require("../../controllers");
 const router = express.Router();
 
 router.get("/getcomments/:goodId", ctrlWrapper(ctrl.getComments));
-// router.get("/id/:id", ctrlWrapper(ctrl.getById));
-// router.patch(
-//   "/edit",
-//   auth,
-//   validation(joiAddGoodSchema),
-//   ctrlWrapper(ctrl.editGood)
-// );
-// router.delete("/delete/:id", auth, ctrlWrapper(ctrl.deleteGood));
+
+router.patch(
+  "/reply/:commentId",
+  auth,
+  // validation(joiAddCommentSchema),
+  ctrlWrapper(ctrl.replyComment)
+);
+router.delete("/delete/:commentId", auth, ctrlWrapper(ctrl.deleteComment));
 
 router.post(
   "/addcomment/:goodId",
