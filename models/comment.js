@@ -10,7 +10,7 @@ const commentSchema = new Schema(
 
     text: {
       type: String,
-      required: [true, "text is required"],
+      // required: [true, "text is required"],
       minLength: 2,
       maxLength: 5000,
     },
@@ -31,7 +31,7 @@ const commentSchema = new Schema(
 
 const joiCommentsSchema = Joi.object({
   userName: Joi.string().required(),
-  text: Joi.string().min(2).max(5000).required(),
+  text: Joi.string().min(2).max(5000),
   reply: Joi.string(),
 });
 
