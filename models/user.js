@@ -23,7 +23,10 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      match: [passwordRegexp, "Password can't contain white spaces"],
+      match: [
+        passwordRegexp,
+        "Password can't contain white spaces and should be only with latinic letters",
+      ],
       minLength: 7,
     },
 
