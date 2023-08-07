@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const nameRegexp =
   /^[a-zA-Zа-яА-ЯіІїЇґҐщЩьЬЄє'\s]*[a-zA-Zа-яА-ЯіІїЇґҐщЩьЬЄє'][a-zA-Zа-яА-ЯіІїЇґҐщЩьЬЄє'\s]*$/;
 
-const passwordRegexp = /^\S+$/;
+const passwordRegexp = /^[a-zA-Z0-9!@#$%^&*()\-_=+{};:,<.>/?]*$/;
 const phoneRegexp = /^\+380\d{9}$/;
 const emailRegexp = /^[^а-яА-ЯёЁ!#$%*/?^`+&{|}~]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
