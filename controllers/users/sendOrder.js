@@ -12,9 +12,9 @@ const sendOrder = async (req, res) => {
     html: `
       <div>
         <h2>Customer</h2>
-        <p>Name: ${body.user.name}</p>
-        <p>Phone: ${body.user.phone}</p>
-        <p>Email: ${body.user.email}</p>
+        <p>Name: ${body.name}</p>
+        <p>Phone: ${body.phone}</p>
+        <p>Email: ${body.email}</p>
         <h2>Order</h2>
       <div>${body.goods}</div>
       <h2>Total Sum</h2>
