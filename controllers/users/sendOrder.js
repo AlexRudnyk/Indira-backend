@@ -16,9 +16,7 @@ const sendOrder = async (req, res) => {
         <p>Phone: ${body.phone}</p>
         <p>Email: ${body.email}</p>
         <h2>Order</h2>
-      <div>${body.title}</div>
-      <div>${body.price}</div>
-      <div>${body.count}</div>
+      <div>${body.goods}</div>
       <h2>Total Sum</h2>
       <p>${body.totalSum} UAH</p>
       </div>
